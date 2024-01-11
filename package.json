@@ -1,0 +1,34 @@
+{
+  "name": "project-1",
+  "version": "1.0.0",
+  "description": "MovieAdda App",
+  "scripts": {
+    "start": "parcel index.html",
+    "deploy": "parcel build index.html",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "(https://github.com/Shivanikanswal/MovieAdda.git)"
+  },
+  "keywords": [
+    "movie",
+    "app"
+  ],
+  "author": "Shivani Kanswal",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^10.4.16",
+    "parcel": "^2.10.3",
+    "postcss": "^8.4.33",
+    "process": "^0.11.10",
+    "tailwindcss": "^3.4.1"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "browserslist": [
+    "last 10 versions"
+  ]
+}
