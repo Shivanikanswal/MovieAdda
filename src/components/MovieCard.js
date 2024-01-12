@@ -15,9 +15,9 @@ const MovieCard = (props) => {
   }
 
   return (
-    <div className="movie-card">
+    <div className="movie-card hover:scale-105 hover:transition-all">
       <img
-        className=" h-72 w-52 rounded-md hover:cursor-pointer"
+        className=" h-72 w-[12.5rem] rounded-md hover:cursor-pointer"
         src={CDN_URL + poster_path}
         //onClick={<MovieModal />}
       ></img>
