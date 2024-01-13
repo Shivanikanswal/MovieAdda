@@ -1,23 +1,23 @@
 import { useState } from "react";
 
 const Header = () => {
-  //const [searchText, setSearchText] = useState([""]);
+  const [searchText, setSearchText] = useState([""]);
   return (
-    <div className="text-3xl border-b border-slate-300 mb-4">
-      <h1 className="logo text-white p-5">
+    <div className="border-b border-slate-300 mb-4 flex justify-between">
+      <h1 className="logo text-white p-5 text-3xl">
         <span>ma</span>
         <span>MovieAdda</span>
       </h1>
-      <div className="search flex rounded-md outline outline-1 shadow-lg shadow-slate-300">
+      <div className="search flex p-5 rounded-sm">
         <div>
           <input
             type="text"
             placeholder="Search..."
             className="search-box bg-neutral-100 w-96 h-10 pl-4 focus:outline-none"
-            value={""}
-            // onChange={(e) => {
-            // setSearchText(e.target.value);
-            // }}
+            value={searchText}
+            onChange={(e) => {
+              setSearchText(e.target.value);
+            }}
           />
         </div>
         <div>

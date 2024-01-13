@@ -23,7 +23,7 @@ const MovieCard = (props) => {
       ></img>
       <div className="content text-white text-lg">
         <h3>{newTitle}</h3>
-        <h4>{year}</h4>
+        <h4 className=" text-sm">{year}</h4>
       </div>
     </div>
   );
