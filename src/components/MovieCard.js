@@ -1,8 +1,11 @@
 import { CDN_URL } from "../utils/constants";
+import MovieModal from "./MovieModal";
+import { useState } from "react";
 
 const MovieCard = (props) => {
-  const { resData } = props;
+  const { resData, onClick } = props;
   const { title, id, poster_path, release_date } = resData;
+  const [showModal, setShowModal] = useState(false);
 
   const xmas = new Date(resData.release_date);
   const year = xmas.getFullYear();
@@ -15,11 +18,13 @@ const MovieCard = (props) => {
   }
 
   return (
-    <div className="movie-card hover:scale-105 hover:transition-all">
+    <div
+      className="movie-card hover:scale-105 hover:transition-all"
+      onClick={() => onClick(resData)}
+    >
       <img
         className=" h-72 w-[12.5rem] rounded-md hover:cursor-pointer"
         src={CDN_URL + poster_path}
-        //onClick={<MovieModal />}
       ></img>
       <div className="content text-white text-lg">
         <h3>{newTitle}</h3>
