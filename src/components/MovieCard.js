@@ -5,7 +5,6 @@ import { useState } from "react";
 const MovieCard = (props) => {
   const { resData, onClick } = props;
   const { title, id, poster_path, release_date } = resData;
-  const [showModal, setShowModal] = useState(false);
 
   const xmas = new Date(resData.release_date);
   const year = xmas.getFullYear();

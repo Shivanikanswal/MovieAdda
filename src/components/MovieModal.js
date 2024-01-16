@@ -5,20 +5,12 @@ import MovieDetail from "./MovieDetail";
 
 const MovieModal = (props) => {
   const { resData, isShowModal, onCloseModal } = props;
-  const { id, backdrop_path, original_title, overview, genre_ids } = resData;
-  const [movieDetail, setMovieDetail] = useState([]);
+  const { id } = resData;
 
-  useEffect(() => {
-    fetchMovieData();
-  }, [" "]);
-  const fetchMovieData = async () => {
-    const movieInfo = await fetch(
-      "https://api.themoviedb.org/3/movie/906126?api_key=a34b3f8b17f2cd887f4d28e55e96402b"
-    );
-    const jsonData = await movieInfo.json();
-    setMovieDetail(jsonData);
-    // console.log(jsonData);
-  };
+  const url =
+    "https://api.themoviedb.org/3/movie/" +
+    id +
+    "?api_key=a34b3f8b17f2cd887f4d28e55e96402b";
 
   return (
     <div
@@ -51,7 +43,7 @@ const MovieModal = (props) => {
         <div className="closeIcon" onClick={onCloseModal}>
           <FontAwesomeIcon icon={faTimes} />
         </div>
-        <MovieDetail movieDetail={movieDetail} />
+        <MovieDetail movieDetails={resData} />
       </div>
     </div>
   );
