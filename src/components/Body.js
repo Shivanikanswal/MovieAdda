@@ -24,7 +24,7 @@ const Body = () => {
   return (
     <div className="mainbody">
       <div className="movie-container">
-        <div className="flex flex-wrap justify-center gap-5 py-4 px-2 mt-9">
+        <div className="flex flex-wrap justify-center gap-[4.25rem] py-4 px-2 mt-9">
           {listOfMovies.map((resData, index) => {
             return (
               <MovieCard

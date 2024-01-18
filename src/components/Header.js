@@ -5,7 +5,9 @@ const Header = () => {
   return (
     <div className="border-b border-slate-300 mb-4 flex justify-between">
       <h1 className="logo text-white p-5 text-3xl">
-        <span>ma</span>
+        <span>
+          <img src=""></img>
+        </span>
         <span>MovieAdda</span>
       </h1>
       <div className="search flex p-5 rounded-sm">

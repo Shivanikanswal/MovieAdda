@@ -1,10 +1,14 @@
 import { CDN_URL } from "../utils/constants";
-import MovieModal from "./MovieModal";
-import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+//import { faStar } from "@fortawesome/free-regular-svg-icons";
+import { faS } from "@fortawesome/free-solid-svg-icons";
+import { faStar } from "@fortawesome/free-regular-svg-icons";
 
 const MovieCard = (props) => {
   const { resData, onClick } = props;
-  const { title, id, poster_path, release_date } = resData;
+  const { vote_average, id, poster_path, release_date } = resData;
+
+  console.log(resData);
 
   const xmas = new Date(resData.release_date);
   const year = xmas.getFullYear();
@@ -27,7 +31,10 @@ const MovieCard = (props) => {
       ></img>
       <div className="content text-white text-lg">
         <h3>{newTitle}</h3>
-        <h4 className=" text-sm">{year}</h4>
+        <h4 className=" text-sm">
+          {year} | {vote_average.toFixed(1)}{" "}
+          <FontAwesomeIcon icon={faStar} className=" text-yellow-300" />
+        </h4>
       </div>
     </div>
   );

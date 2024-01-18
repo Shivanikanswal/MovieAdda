@@ -1,10 +1,11 @@
 import { CDN_URL } from "../utils/constants";
 const MovieDetail = (props) => {
-  const { id, backdrop_path, title, overview, genre_ids } = props.movieDetails;
+  const { id, poster_path, title, overview, genre_ids } = props.movieDetails;
+  console.log(props.movieDetails);
   return (
     <div className="movieInfo flex">
       <div className="moviePoster">
-        <img src={CDN_URL + backdrop_path}></img>
+        <img src={CDN_URL + poster_path} className="rounded-md w-80 h-96"></img>
       </div>
       <div className="movieInfo">
         <div className="movieHeader">
