@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 const Header = () => {
   const [searchText, setSearchText] = useState([""]);
@@ -24,20 +26,7 @@ const Header = () => {
         </div>
         <div>
           <button className="bg-neutral-100 px-2 h-10 border-l border-black text-black">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6 opacity-50"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-              />
-            </svg>
+            <FontAwesomeIcon icon={faSearch} />
           </button>
         </div>
       </div>

@@ -3,13 +3,13 @@ const MovieDetail = (props) => {
   const { id, poster_path, title, overview, genre_ids } = props.movieDetails;
   console.log(props.movieDetails);
   return (
-    <div className="movieInfo flex">
-      <div className="moviePoster">
-        <img src={CDN_URL + poster_path} className="rounded-md w-80 h-96"></img>
+    <div className="flex p-4">
+      <div className="moviePoster w-1/3 mr-6">
+        <img src={CDN_URL + poster_path} className="rounded-md"></img>
       </div>
-      <div className="movieInfo">
+      <div className="movieInfo w-2/3">
         <div className="movieHeader">
-          <h1 className="movieTitle text-3xl">{title}</h1>
+          <h1 className="movieTitle text-4xl">{title}</h1>
           <p className="movieGenre">{}</p>
         </div>
         <div className="movieDescription">
