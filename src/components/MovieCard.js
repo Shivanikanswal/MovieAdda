@@ -8,7 +8,7 @@ const MovieCard = (props) => {
   const { resData, onClick } = props;
   const { vote_average, id, poster_path, release_date } = resData;
 
-  console.log(resData);
+  //console.log(resData);
 
   const xmas = new Date(resData.release_date);
   const year = xmas.getFullYear();

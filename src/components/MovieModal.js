@@ -2,15 +2,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 import MovieDetail from "./MovieDetail";
+import { BASE_URL } from "../utils/constants";
+import { API_KEY } from "../utils/constants";
 
 const MovieModal = (props) => {
   const { resData, isShowModal, onCloseModal } = props;
   const { id } = resData;
 
-  const url =
-    "https://api.themoviedb.org/3/movie/" +
-    id +
-    "?api_key=a34b3f8b17f2cd887f4d28e55e96402b";
+  const url = BASE_URL + "/movie/" + id + API_KEY;
 
   return (
     <div className="modal flex fixed top-0 left-0 w-full h-full z-[2] justify-center overflow-hidden items-center bg-[rgb(0,0,0,0.75)] backdrop-blur">
