@@ -10,7 +10,7 @@ const Body = (props) => {
   const [showModal, setShowModal] = useState(false);
   const [resData, setResData] = useState([]);
 
-  console.log(searchResults);
+  //console.log(searchResults);
 
   useEffect(() => {
     fetchData();

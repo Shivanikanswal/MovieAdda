@@ -10,7 +10,7 @@ const Header = (props) => {
   const [searchResults, setSearchResults] = useState([]);
   const url = BASE_URL + "/search/movie" + API_KEY + "&query=" + searchText;
 
-  console.log(searchText);
+  //console.log(searchText);
   useEffect(() => {
     if (searchResults) {
       onSearch(searchResults);

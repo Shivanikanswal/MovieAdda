@@ -6,14 +6,11 @@ import { faStar } from "@fortawesome/free-regular-svg-icons";
 
 const MovieCard = (props) => {
   const { resData, onClick } = props;
-  const { vote_average, id, poster_path, release_date } = resData;
-
-  //console.log(resData);
+  const { vote_average, id, poster_path } = resData;
 
   const xmas = new Date(resData.release_date);
   const year = xmas.getFullYear();
 
-  //var release_date_new = resData.release_date.getYear();
   if (resData.title.split(" ").length >= 2) {
     var newTitle = resData.title.split(" ").slice(0, 2).join(" ") + "...";
   } else {
@@ -30,7 +27,7 @@ const MovieCard = (props) => {
         src={CDN_URL + poster_path}
       ></img>
       <div className="content text-white text-lg">
-        <h3>{newTitle}</h3>
+        <h3 className="font-bold">{newTitle}</h3>
         <h4 className=" text-sm">
           {year} | {vote_average.toFixed(1)}{" "}
           <FontAwesomeIcon icon={faStar} className=" text-yellow-300" />
