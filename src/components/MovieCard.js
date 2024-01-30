@@ -1,15 +1,15 @@
 import { CDN_URL } from "../utils/constants";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-//import { faStar } from "@fortawesome/free-regular-svg-icons";
-import { faS } from "@fortawesome/free-solid-svg-icons";
 import { faStar } from "@fortawesome/free-regular-svg-icons";
 
 const MovieCard = (props) => {
   const { resData, onClick } = props;
   const { vote_average, id, poster_path } = resData;
 
-  const xmas = new Date(resData.release_date);
-  const year = xmas.getFullYear();
+  const release_year = () => {
+    var xmas = new Date(resData.release_date);
+    return xmas.getFullYear();
+  };
 
   if (resData.title.split(" ").length >= 2) {
     var newTitle = resData.title.split(" ").slice(0, 2).join(" ") + "...";
@@ -29,7 +29,7 @@ const MovieCard = (props) => {
       <div className="content text-white text-lg">
         <h3 className="font-bold">{newTitle}</h3>
         <h4 className=" text-sm">
-          {year} | {vote_average.toFixed(1)}{" "}
+          {release_year()} | {vote_average.toFixed(1)}{" "}
           <FontAwesomeIcon icon={faStar} className=" text-yellow-300" />
         </h4>
       </div>

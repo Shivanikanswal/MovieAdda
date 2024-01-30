@@ -11,9 +11,11 @@ const MovieDetail = (props) => {
     tagline,
   } = movieInfo;
   const genreArray = genresList?.join(",");
+  var date = new Date(release_date);
+  var release_year = date.getFullYear();
 
   // const bgImgUrl = CDN_URL + backdrop_path;
-  //console.log(movieInfo);
+  console.log(movieInfo);
 
   function toHoursAndMinutes(runtime) {
     const hours = Math.floor(runtime / 60);
@@ -31,7 +33,7 @@ const MovieDetail = (props) => {
       <div className="movieInfo w-2/3">
         <div className="movieHeader">
           <h1 className="movieTitle text-4xl font-bold mb-1">
-            {original_title}(2023)
+            {original_title}({release_year})
           </h1>
           <p className="movieGenre">
             {release_date} | {genreArray} | {toHoursAndMinutes(runtime)}
