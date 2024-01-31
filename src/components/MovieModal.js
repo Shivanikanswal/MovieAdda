@@ -14,9 +14,10 @@ const MovieModal = (props) => {
   const url = BASE_URL + "/movie/" + id + API_KEY;
   const bgImgUrl = CDN_URL + backdrop_path;
   const style = {
-    backgroundImage: `url(${bgImgUrl})`,
+    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.927),rgba(0, 0, 0, 0.5)) , url(${bgImgUrl})`,
   };
   //console.log(url);
+  // url(${bgImgUrl})
 
   const fetchMovieDetail = async () => {
     const movieDetails = await fetch(url);
@@ -31,7 +32,7 @@ const MovieModal = (props) => {
   return (
     <div className="modal flex fixed top-0 left-0 w-full h-full z-[2] justify-center overflow-hidden items-center bg-[rgb(0,0,0,0.75)] backdrop-blur">
       <div
-        className="modal-content rounded-2xl m-auto p-5 border border-solid border-[#888] w-4/5 text-white bg-cover bg-center shadow-lg"
+        className="modal-content rounded-2xl m-auto p-5 border border-solid border-[#888] w-4/5 text-white bg-cover bg-center"
         style={style}
       >
         <div className="closeIcon text-right" onClick={onCloseModal}>

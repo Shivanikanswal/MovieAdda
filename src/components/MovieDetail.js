@@ -46,6 +46,19 @@ const MovieDetail = (props) => {
           <h3 className="text-[21px] font-bold">Overview</h3>
           <p>{overview}</p>
         </div>
+        <div>
+          <button className="btn border border-white w-[20%] rounded-lg p-1 mt-3 mr-2">
+            Watch Trailer
+          </button>
+          <button className="btn border border-white w-[20%] rounded-lg p-1 mt-3">
+            Credits
+          </button>
+          {/* border: 1px solid white; */}
+          {/* width: 20%; */}
+          {/* border-radius: 10px; */}
+          {/* padding: 3px; */}
+          {/* margin-top: 12px; */}
+        </div>
         <div className="movieCast"></div>
       </div>
     </div>
