@@ -1,5 +1,9 @@
 import { CDN_URL } from "../utils/constants";
+import Credits from "./Credits";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 const MovieDetail = (props) => {
+  // const [creditValue, setCreditValue] = useState(false);
   const { movieInfo } = props;
   const genresList = movieInfo?.genres?.map((genre) => genre.name);
   const {
@@ -23,6 +27,11 @@ const MovieDetail = (props) => {
 
     return hours + "h " + minutes + "m";
   }
+
+  // const callCredits = () => {
+  // setCreditValue(true);
+  // console.log("heeloo");
+  // };
 
   //console.log(toHoursAndMinutes(runtime));
   return (
@@ -51,13 +60,8 @@ const MovieDetail = (props) => {
             Watch Trailer
           </button>
           <button className="btn border border-white w-[20%] rounded-lg p-1 mt-3">
-            Credits
+            <Link to={"/credits"}>Credits</Link>
           </button>
-          {/* border: 1px solid white; */}
-          {/* width: 20%; */}
-          {/* border-radius: 10px; */}
-          {/* padding: 3px; */}
-          {/* margin-top: 12px; */}
         </div>
         <div className="movieCast"></div>
       </div>
