@@ -10,7 +10,6 @@ const Header = (props) => {
   const [searchResults, setSearchResults] = useState([]);
   const url = BASE_URL + "/search/movie" + API_KEY + "&query=" + searchText;
 
-  //console.log(searchText);
   useEffect(() => {
     if (searchResults) {
       onSearch(searchResults);
@@ -21,7 +20,6 @@ const Header = (props) => {
     const searchData = await fetch(url);
     const jsonData = await searchData.json();
     setSearchResults(jsonData?.results);
-    //console.log(jsonData);
   };
 
   useEffect(() => {
@@ -31,6 +29,7 @@ const Header = (props) => {
       setSearchResults([]);
     }
   }, [url, searchText]);
+
   return (
     <div className="border-b border-slate-300 mb-4 flex justify-between p-5">
       <h1 className="logo text-white text-3xl">

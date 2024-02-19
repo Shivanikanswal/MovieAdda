@@ -10,11 +10,10 @@ const MovieCard = (props) => {
     var xmas = new Date(resData.release_date);
     return xmas.getFullYear();
   };
-
-  if (resData.title.split(" ").length >= 2) {
-    var newTitle = resData.title.split(" ").slice(0, 2).join(" ") + "...";
+  if (resData?.title?.split(" ").length >= 2) {
+    var newTitle = resData?.title?.split(" ").slice(0, 2).join(" ") + "...";
   } else {
-    var newTitle = resData.title.split(" ")[0];
+    var newTitle = resData?.title?.split(" ")[0];
   }
 
   return (
@@ -29,7 +28,7 @@ const MovieCard = (props) => {
       <div className="content text-white text-lg">
         <h3 className="font-bold">{newTitle}</h3>
         <h4 className=" text-sm">
-          {release_year()} | {vote_average.toFixed(1)}{" "}
+          {release_year()} | {vote_average?.toFixed(1)}{" "}
           <FontAwesomeIcon icon={faStar} className=" text-yellow-300" />
         </h4>
       </div>

@@ -1,39 +1,67 @@
-import { CDN_URL } from "../utils/constants";
+import { API_KEY, BASE_URL, CDN_URL } from "../utils/constants";
 import Credits from "./Credits";
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, json } from "react-router-dom";
 const MovieDetail = (props) => {
-  // const [creditValue, setCreditValue] = useState(false);
   const { movieInfo } = props;
-  const genresList = movieInfo?.genres?.map((genre) => genre.name);
+  const [castData, setCastData] = useState([]);
+  const [key, setKey] = useState("xyz");
+
   const {
     poster_path,
     overview,
+    id,
     original_title,
     runtime,
     release_date,
     tagline,
   } = movieInfo;
+
+  useEffect(() => {
+    fetchCastUrl();
+    fetchVideo();
+  }, [id]);
+
+  const fetchCastUrl = async () => {
+    const data = await fetch(
+      "https://api.themoviedb.org/3/movie/157336/credits?api_key=a34b3f8b17f2cd887f4d28e55e96402b"
+    );
+    const jsonData = await data.json();
+    //console.log(jsonData);
+    setCastData(jsonData?.cast);
+    //console.log(castData);
+  };
+  const fetchVideo = async () => {
+    const videoData = await fetch(
+      BASE_URL + "/movie/" + id + API_KEY + "&append_to_response=videos"
+    );
+    const jsonVideoData = await videoData.json();
+    if (jsonVideoData?.videos?.results.length > 0) {
+      jsonVideoData?.videos?.results.map((data, index) => {
+        if (data.type === "Trailer") {
+          setKey(data.key);
+        }
+      });
+    }
+  };
+
+  const genresList = movieInfo?.genres?.map((genre) => genre.name);
   const genreArray = genresList?.join(",");
   var date = new Date(release_date);
   var release_year = date.getFullYear();
-
-  // const bgImgUrl = CDN_URL + backdrop_path;
-  console.log(movieInfo);
+  const trailerUrl = "https://www.youtube.com//watch?v=" + key;
 
   function toHoursAndMinutes(runtime) {
     const hours = Math.floor(runtime / 60);
     const minutes = runtime % 60;
-
     return hours + "h " + minutes + "m";
   }
 
-  // const callCredits = () => {
-  // setCreditValue(true);
-  // console.log("heeloo");
-  // };
+  const callTrailer = () => {
+    location.href = trailerUrl;
+  };
 
-  //console.log(toHoursAndMinutes(runtime));
+  //console.log(movieInfo?.id);
   return (
     <div className="flex p-4">
       <div className="moviePoster w-1/3 mr-6">
@@ -56,11 +84,16 @@ const MovieDetail = (props) => {
           <p>{overview}</p>
         </div>
         <div>
-          <button className="btn border border-white w-[20%] rounded-lg p-1 mt-3 mr-2">
+          <button
+            className="btn border border-white w-[20%] rounded-lg p-1 mt-3 mr-2"
+            onClick={() => callTrailer()}
+          >
             Watch Trailer
           </button>
           <button className="btn border border-white w-[20%] rounded-lg p-1 mt-3">
-            <Link to={"/credits"}>Credits</Link>
+            <Link to={"/credits/" + movieInfo?.id} key={movieInfo?.id}>
+              Credits
+            </Link>
           </button>
         </div>
         <div className="movieCast"></div>

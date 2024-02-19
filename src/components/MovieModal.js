@@ -16,14 +16,16 @@ const MovieModal = (props) => {
   const style = {
     backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.927),rgba(0, 0, 0, 0.5)) , url(${bgImgUrl})`,
   };
-  //console.log(url);
-  // url(${bgImgUrl})
 
   const fetchMovieDetail = async () => {
     const movieDetails = await fetch(url);
+    //console.log(movieDetails);
     const jsonData = await movieDetails.json();
+    //console.log(jsonData);
     setMovieInfo(jsonData);
   };
+
+  //console.log(movieInfo);
 
   useEffect(() => {
     fetchMovieDetail();
