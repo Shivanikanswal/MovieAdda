@@ -1,11 +1,13 @@
-import { API_KEY, BASE_URL, CDN_URL } from "../utils/constants";
+import { API_KEY, BASE_URL, CDN_URL, VIDEO_URL } from "../utils/constants";
 import Credits from "./Credits";
 import { useState, useEffect } from "react";
-import { Link, json } from "react-router-dom";
+import { Link, json, useParams } from "react-router-dom";
 const MovieDetail = (props) => {
   const { movieInfo } = props;
-  const [castData, setCastData] = useState([]);
-  const [key, setKey] = useState("xyz");
+  //const [castData, setCastData] = useState([]);
+  const [key, setKey] = useState("");
+
+  // const movieId = useParams();
 
   const {
     poster_path,
@@ -18,24 +20,17 @@ const MovieDetail = (props) => {
   } = movieInfo;
 
   useEffect(() => {
-    fetchCastUrl();
     fetchVideo();
   }, [id]);
 
-  const fetchCastUrl = async () => {
-    const data = await fetch(
-      "https://api.themoviedb.org/3/movie/157336/credits?api_key=a34b3f8b17f2cd887f4d28e55e96402b"
-    );
-    const jsonData = await data.json();
-    //console.log(jsonData);
-    setCastData(jsonData?.cast);
-    //console.log(castData);
-  };
   const fetchVideo = async () => {
     const videoData = await fetch(
-      BASE_URL + "/movie/" + id + API_KEY + "&append_to_response=videos"
+      BASE_URL + "/movie/" + id + API_KEY
+      //https://api.themoviedb.org/3/movie/{movie_id}/videos
     );
     const jsonVideoData = await videoData.json();
+    console.log(jsonVideoData);
+    //setCastData(jsonVideoData?.credits?.cast);
     if (jsonVideoData?.videos?.results.length > 0) {
       jsonVideoData?.videos?.results.map((data, index) => {
         if (data.type === "Trailer") {
@@ -44,12 +39,13 @@ const MovieDetail = (props) => {
       });
     }
   };
+  //console.log(castData);
 
   const genresList = movieInfo?.genres?.map((genre) => genre.name);
   const genreArray = genresList?.join(",");
   var date = new Date(release_date);
   var release_year = date.getFullYear();
-  const trailerUrl = "https://www.youtube.com//watch?v=" + key;
+  const trailerUrl = VIDEO_URL + key;
 
   function toHoursAndMinutes(runtime) {
     const hours = Math.floor(runtime / 60);
@@ -77,7 +73,10 @@ const MovieDetail = (props) => {
           </p>
         </div>
         <div>
-          <p className=" italic">{tagline}</p>
+          <p className=" italic">
+            {tagline}
+            {id}
+          </p>
         </div>
         <div className="movieDescription">
           <h3 className="text-[21px] font-bold">Overview</h3>
@@ -91,7 +90,7 @@ const MovieDetail = (props) => {
             Watch Trailer
           </button>
           <button className="btn border border-white w-[20%] rounded-lg p-1 mt-3">
-            <Link to={"/credits/" + movieInfo?.id} key={movieInfo?.id}>
+            <Link to={"/credits/" + id} key={id}>
               Credits
             </Link>
           </button>
