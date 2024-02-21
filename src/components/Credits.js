@@ -9,9 +9,6 @@ const Credits = () => {
 
   const id = useParams();
   const movieId = id.movieId;
-  //const location = useLocation();
-  //const castData = location.state.castData;
-  console.log(movieId);
   useEffect(() => {
     fetchCastUrl();
   }, []);
@@ -21,20 +18,16 @@ const Credits = () => {
       BASE_URL + "/movie/" + movieId + "/credits" + API_KEY
     );
     const jsonData = await data.json();
-    //console.log(jsonData);
     setCastData(jsonData?.cast);
-    console.log(castData);
   };
-  //console.log(props);
-  //const { castData } = props.castData;
 
   return (
-    <div className=" bg-white">
+    <div className="cast-main">
       <div className="cast-container">
         <div>
           <h1>Top Billed Cast</h1>
           <img src=""></img>
-          <div>
+          <div className="credit-container flex flex-wrap justify-center gap-[4.25rem] py-4 px-2 mt-9">
             {castData.map((data, index) => {
               return <CastReview data={data} key={index} />;
             })}
