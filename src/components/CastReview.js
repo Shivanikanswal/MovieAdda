@@ -2,7 +2,7 @@ import { CDN_URL } from "../utils/constants";
 const CastReview = (props) => {
   const { creditData, onClick } = props;
   const { profile_path } = creditData;
-  console.log(creditData);
+  //console.log(creditData);
   return (
     <div
       className="cast-card hover:scale-105 hover:transition-all"
@@ -15,7 +15,7 @@ const CastReview = (props) => {
       ></img>
       <div className="content text-lg text-white">
         <h3 className="font-bold">{creditData.name}</h3>
-        <h4 className=" text-sm">{creditData.character}</h4>
+        <h4 className=" text-base">{creditData.character}</h4>
       </div>
     </div>
   );

@@ -1,3 +1,4 @@
+import PersonDetail from "./PersonDetail";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 const PersonModal = (props) => {
@@ -8,7 +9,7 @@ const PersonModal = (props) => {
         <div className="closeIcon text-right" onClick={onCloseModal}>
           <FontAwesomeIcon icon={faTimes} />
         </div>
-        {/*<MovieDetail movieInfo={movieInfo} /> */}
+        <PersonDetail creditData={creditData} />
       </div>
     </div>
   );

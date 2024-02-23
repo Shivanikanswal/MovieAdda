@@ -73,10 +73,7 @@ const MovieDetail = (props) => {
           </p>
         </div>
         <div>
-          <p className=" italic">
-            {tagline}
-            {id}
-          </p>
+          <p className=" italic">{tagline}</p>
         </div>
         <div className="movieDescription">
           <h3 className="text-[21px] font-bold">Overview</h3>
