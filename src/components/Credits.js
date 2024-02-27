@@ -14,20 +14,25 @@ const Credits = () => {
   const movieId = id.movieId;
   useEffect(() => {
     fetchCastUrl();
-  }, []);
+  }, [movieId]);
 
   const fetchCastUrl = async () => {
     const data = await fetch(
       BASE_URL + "/movie/" + movieId + "/credits" + API_KEY
     );
+
     const jsonData = await data.json();
     setCastData(jsonData?.cast);
   };
 
-  const handleShowModal = (creditData) => {
+  const handleShowCastModal = (creditData) => {
     setShowCastModal(true);
     setCreditData(creditData);
   };
+
+  function onClickMovie(creditData) {
+    setShowCastModal(false);
+  }
 
   return (
     <div className="cast-main">
@@ -41,15 +46,16 @@ const Credits = () => {
                 <CastReview
                   creditData={creditData}
                   key={index}
-                  onClick={(creditData) => handleShowModal(creditData)}
+                  onClick={(creditData) => handleShowCastModal(creditData)}
                 />
               );
             })}
             {showCastModal && (
               <PersonModal
-                onCloseModal={() => setShowCastModal(false)}
+                onClosePersonModal={() => setShowCastModal(false)}
                 isShowCastModal={showCastModal}
                 creditData={creditData}
+                onClickMovie={(creditData) => onClickMovie(creditData)}
               />
             )}
           </div>

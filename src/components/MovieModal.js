@@ -19,13 +19,9 @@ const MovieModal = (props) => {
 
   const fetchMovieDetail = async () => {
     const movieDetails = await fetch(url);
-    //console.log(movieDetails);
     const jsonData = await movieDetails.json();
-    //console.log(jsonData);
     setMovieInfo(jsonData);
   };
-
-  //console.log(movieInfo);
 
   useEffect(() => {
     fetchMovieDetail();
@@ -40,7 +36,7 @@ const MovieModal = (props) => {
         <div className="closeIcon text-right" onClick={onCloseModal}>
           <FontAwesomeIcon icon={faTimes} />
         </div>
-        <MovieDetail movieInfo={movieInfo} />
+        <MovieDetail movieInfo={movieInfo} onClick={props.onClick} />
       </div>
     </div>
   );

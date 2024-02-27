@@ -3,11 +3,8 @@ import Credits from "./Credits";
 import { useState, useEffect } from "react";
 import { Link, json, useParams } from "react-router-dom";
 const MovieDetail = (props) => {
-  const { movieInfo } = props;
-  //const [castData, setCastData] = useState([]);
+  const { movieInfo, onClick } = props;
   const [key, setKey] = useState("");
-
-  // const movieId = useParams();
 
   const {
     poster_path,
@@ -24,13 +21,8 @@ const MovieDetail = (props) => {
   }, [id]);
 
   const fetchVideo = async () => {
-    const videoData = await fetch(
-      BASE_URL + "/movie/" + id + API_KEY
-      //https://api.themoviedb.org/3/movie/{movie_id}/videos
-    );
+    const videoData = await fetch(BASE_URL + "/movie/" + id + API_KEY);
     const jsonVideoData = await videoData.json();
-    console.log(jsonVideoData);
-    //setCastData(jsonVideoData?.credits?.cast);
     if (jsonVideoData?.videos?.results.length > 0) {
       jsonVideoData?.videos?.results.map((data, index) => {
         if (data.type === "Trailer") {
@@ -39,7 +31,6 @@ const MovieDetail = (props) => {
       });
     }
   };
-  //console.log(castData);
 
   const genresList = movieInfo?.genres?.map((genre) => genre.name);
   const genreArray = genresList?.join(",");
@@ -57,7 +48,6 @@ const MovieDetail = (props) => {
     location.href = trailerUrl;
   };
 
-  //console.log(movieInfo?.id);
   return (
     <div className="flex p-4">
       <div className="moviePoster w-1/3 mr-6">
@@ -87,7 +77,7 @@ const MovieDetail = (props) => {
             Watch Trailer
           </button>
           <button className="btn border border-white w-[20%] rounded-lg p-1 mt-3">
-            <Link to={"/credits/" + id} key={id}>
+            <Link to={"/credits/" + id} key={id} onClick={props.onClick}>
               Credits
             </Link>
           </button>

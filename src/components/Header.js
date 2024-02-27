@@ -33,10 +33,16 @@ const Header = (props) => {
   return (
     <div className="border-b border-slate-300 mb-4 flex justify-between p-5">
       <h1 className="logo text-white text-3xl">
-        <span>
-          <img src=""></img>
-        </span>
-        <span>MovieAdda</span>
+        <div className="flex">
+          <span>
+            <img
+              src="https://cdn.vectorstock.com/i/1000x1000/73/14/movie-clap-board-icon-on-black-background-vector-23077314.webp"
+              alt="App logo"
+              className=" h-24 w-24"
+            ></img>
+          </span>
+          <span>MovieAdda</span>
+        </div>
       </h1>
       <div className="search flex rounded-sm">
         <div>

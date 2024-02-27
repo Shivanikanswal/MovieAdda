@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-regular-svg-icons";
 
 const MovieCard = (props) => {
-  const { resData, onClick } = props;
+  const { resData, onClick, size, counter } = props;
   const { vote_average, id, poster_path } = resData;
 
   const release_year = () => {
@@ -25,13 +25,15 @@ const MovieCard = (props) => {
         className=" h-72 w-[12.5rem] rounded-md hover:cursor-pointer"
         src={CDN_URL + poster_path}
       ></img>
-      <div className="content text-white text-lg">
-        <h3 className="font-bold">{newTitle}</h3>
-        <h4 className=" text-sm">
-          {release_year()} | {vote_average?.toFixed(1)}{" "}
-          <FontAwesomeIcon icon={faStar} className=" text-yellow-300" />
-        </h4>
-      </div>
+      {!counter && (
+        <div className="content text-white text-lg">
+          <h3 className="font-bold">{newTitle}</h3>
+          <h4 className=" text-sm">
+            {release_year()} | {vote_average?.toFixed(1)}{" "}
+            <FontAwesomeIcon icon={faStar} className=" text-yellow-300" />
+          </h4>
+        </div>
+      )}
     </div>
   );
 };

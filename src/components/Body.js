@@ -16,9 +16,7 @@ const Body = (props) => {
   }, []);
   const fetchData = async () => {
     const movieData = await fetch(BASE_URL + "/movie/popular" + API_KEY);
-    //console.log(movieData);
     const jsonData = await movieData.json();
-    //console.log(jsonData);
     setListOfMovies(jsonData?.results);
   };
   const handleShowModal = (resData) => {

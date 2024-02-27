@@ -2,7 +2,6 @@ import { CDN_URL } from "../utils/constants";
 const CastReview = (props) => {
   const { creditData, onClick } = props;
   const { profile_path } = creditData;
-  //console.log(creditData);
   return (
     <div
       className="cast-card hover:scale-105 hover:transition-all"
