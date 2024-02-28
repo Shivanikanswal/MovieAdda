@@ -10,7 +10,11 @@ const CastReview = (props) => {
       {}
       <img
         className=" h-72 w-[12.5rem] rounded-md hover:cursor-pointer"
-        src={CDN_URL + profile_path}
+        src={
+          profile_path
+            ? CDN_URL + profile_path
+            : "https://www.sdm-chatsworth.hk/wp-content/uploads/2017/12/blank-person-male.png"
+        }
       ></img>
       <div className="content text-lg text-white">
         <h3 className="font-bold">{creditData.name}</h3>

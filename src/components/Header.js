@@ -31,17 +31,17 @@ const Header = (props) => {
   }, [url, searchText]);
 
   return (
-    <div className="border-b border-slate-300 mb-4 flex justify-between p-5">
+    <div className="border-b border-slate-300 mb-4 flex justify-between p-4">
       <h1 className="logo text-white text-3xl">
         <div className="flex">
           <span>
             <img
-              src="https://cdn.vectorstock.com/i/1000x1000/73/14/movie-clap-board-icon-on-black-background-vector-23077314.webp"
+              src="https://i.pinimg.com/736x/ea/8d/11/ea8d11f1ffc6355b8a440106ce61d0f3.jpg"
               alt="App logo"
-              className=" h-24 w-24"
+              className=" h-14 w-20"
             ></img>
           </span>
-          <span>MovieAdda</span>
+          <span className="title mt-2">MovieAdda</span>
         </div>
       </h1>
       <div className="search flex rounded-sm">

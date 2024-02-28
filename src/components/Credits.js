@@ -39,7 +39,6 @@ const Credits = () => {
       <div className="cast-container">
         <div>
           <h1>Top Billed Cast</h1>
-          <img src=""></img>
           <div className="credit-container flex flex-wrap justify-center gap-[4.25rem] py-4 px-2 mt-9">
             {castData.map((creditData, index) => {
               return (

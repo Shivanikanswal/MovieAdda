@@ -6,6 +6,8 @@ const MovieDetail = (props) => {
   const { movieInfo, onClick } = props;
   const [key, setKey] = useState("");
 
+  const [streamers, setStreamers] = useState([]);
+
   const {
     poster_path,
     overview,
@@ -17,9 +19,21 @@ const MovieDetail = (props) => {
   } = movieInfo;
 
   useEffect(() => {
-    fetchVideo();
+    if (id) fetchVideo();
   }, [id]);
 
+  useEffect(() => {
+    if (id) fetchStreamers();
+  }, []);
+
+  const fetchStreamers = async () => {
+    const streamingUrlData = await fetch(
+      BASE_URL + "/movie/" + id + "/watch/providers" + API_KEY
+    );
+    const jsonUrlData = await streamingUrlData.json();
+    console.log(jsonUrlData?.results?.IN?.buy);
+    setStreamers(jsonUrlData?.results?.IN);
+  };
   const fetchVideo = async () => {
     const videoData = await fetch(BASE_URL + "/movie/" + id + API_KEY);
     const jsonVideoData = await videoData.json();
@@ -43,6 +57,7 @@ const MovieDetail = (props) => {
     const minutes = runtime % 60;
     return hours + "h " + minutes + "m";
   }
+  console.log(props?.movieInfo?.id);
 
   const callTrailer = () => {
     location.href = trailerUrl;
@@ -51,7 +66,14 @@ const MovieDetail = (props) => {
   return (
     <div className="flex p-4">
       <div className="moviePoster w-1/3 mr-6">
-        <img src={CDN_URL + poster_path} className="rounded-md"></img>
+        <img
+          src={
+            poster_path
+              ? CDN_URL + poster_path
+              : "https://png.pngtree.com/png-vector/20220611/ourmid/pngtree-film-icon-in-flat-circle-isolated-on-white-background-vector-illustration-png-image_4981269.png"
+          }
+          className="rounded-md"
+        ></img>
       </div>
       <div className="movieInfo w-2/3">
         <div className="movieHeader">

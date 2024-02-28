@@ -23,7 +23,11 @@ const MovieCard = (props) => {
     >
       <img
         className=" h-72 w-[12.5rem] rounded-md hover:cursor-pointer"
-        src={CDN_URL + poster_path}
+        src={
+          poster_path
+            ? CDN_URL + poster_path
+            : "https://png.pngtree.com/png-vector/20220611/ourmid/pngtree-film-icon-in-flat-circle-isolated-on-white-background-vector-illustration-png-image_4981269.png"
+        }
       ></img>
       {!counter && (
         <div className="content text-white text-lg">

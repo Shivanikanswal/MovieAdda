@@ -40,7 +40,14 @@ const PersonDetail = (props) => {
   return (
     <div className="flex p-4">
       <div className="w-1/3 mr-6">
-        <img src={CDN_URL + profile_path} className="rounded-md"></img>
+        <img
+          src={
+            profile_path
+              ? CDN_URL + profile_path
+              : "https://www.sdm-chatsworth.hk/wp-content/uploads/2017/12/blank-person-male.png"
+          }
+          className="rounded-md h-full"
+        ></img>
       </div>
       <div className="w-2/3">
         <div className="cast-header">
