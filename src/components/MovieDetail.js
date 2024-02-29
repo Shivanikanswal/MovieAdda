@@ -31,14 +31,15 @@ const MovieDetail = (props) => {
       BASE_URL + "/movie/" + id + "/watch/providers" + API_KEY
     );
     const jsonUrlData = await streamingUrlData.json();
-    console.log(jsonUrlData?.results?.IN?.buy);
     setStreamers(jsonUrlData?.results?.IN);
   };
   const fetchVideo = async () => {
-    const videoData = await fetch(BASE_URL + "/movie/" + id + API_KEY);
+    const videoData = await fetch(
+      BASE_URL + "/movie/" + id + "/videos" + API_KEY
+    );
     const jsonVideoData = await videoData.json();
-    if (jsonVideoData?.videos?.results.length > 0) {
-      jsonVideoData?.videos?.results.map((data, index) => {
+    if (jsonVideoData?.results.length > 0) {
+      jsonVideoData?.results.map((data, index) => {
         if (data.type === "Trailer") {
           setKey(data.key);
         }
@@ -57,7 +58,6 @@ const MovieDetail = (props) => {
     const minutes = runtime % 60;
     return hours + "h " + minutes + "m";
   }
-  console.log(props?.movieInfo?.id);
 
   const callTrailer = () => {
     location.href = trailerUrl;
