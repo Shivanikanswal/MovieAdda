@@ -5,8 +5,11 @@ import { Link, json, useParams } from "react-router-dom";
 const MovieDetail = (props) => {
   const { movieInfo, onClick } = props;
   const [key, setKey] = useState("");
+  const [crewData, setCrewData] = useState([]);
 
   const [streamers, setStreamers] = useState([]);
+
+  console.log(movieInfo);
 
   const {
     poster_path,
@@ -25,6 +28,16 @@ const MovieDetail = (props) => {
   useEffect(() => {
     if (id) fetchStreamers();
   }, []);
+
+  useEffect(() => {
+    if (id) fetchCrewUrl();
+  }, [id]);
+  const fetchCrewUrl = async () => {
+    const data = await fetch(BASE_URL + "/movie/" + id + "/credits" + API_KEY);
+    const jsonData = await data.json();
+    setCrewData(jsonData?.crew);
+    //console.log(jsonData?.crew);
+  };
 
   const fetchStreamers = async () => {
     const streamingUrlData = await fetch(
@@ -46,6 +59,19 @@ const MovieDetail = (props) => {
       });
     }
   };
+  // console.log(crewData);
+  const directorInfo = crewData?.filter(
+    (element) => element.job === "Director"
+  );
+
+  const producerInfo = crewData?.filter(
+    (element) => element.job === "Screenplay"
+  );
+
+  if (directorInfo.length) var directorsName = directorInfo[0].name;
+  if (producerInfo.length) var producerName = producerInfo[0].name;
+
+  console.log(directorsName);
 
   const genresList = movieInfo?.genres?.map((genre) => genre.name);
   const genreArray = genresList?.join(",");
@@ -76,7 +102,7 @@ const MovieDetail = (props) => {
         ></img>
       </div>
       <div className="movieInfo w-2/3">
-        <div className="movieHeader">
+        <div className="movieHeader mb-4">
           <h1 className="movieTitle text-4xl font-bold mb-1">
             {original_title}({release_year})
           </h1>
@@ -84,25 +110,37 @@ const MovieDetail = (props) => {
             {release_date} | {genreArray} | {toHoursAndMinutes(runtime)}
           </p>
         </div>
-        <div>
+        <div className=" mb-2">
           <p className=" italic">{tagline}</p>
         </div>
-        <div className="movieDescription">
-          <h3 className="text-[21px] font-bold">Overview</h3>
-          <p>{overview}</p>
-        </div>
-        <div>
+        <div className="mb-5">
           <button
             className="btn border border-white w-[20%] rounded-lg p-1 mt-3 mr-2"
             onClick={() => callTrailer()}
           >
             Watch Trailer
           </button>
-          <button className="btn border border-white w-[20%] rounded-lg p-1 mt-3">
+          <button className="btn border border-white w-[20%] rounded-lg p-1 mt-3 ml-4">
             <Link to={"/credits/" + id} key={id} onClick={props.onClick}>
               Credits
             </Link>
           </button>
+        </div>
+        <div className="movieDescription mb-5">
+          <h3 className="text-[21px] font-bold">Overview</h3>
+          <p>{overview}</p>
+        </div>
+        <div className="mt-3 flex">
+          <div className="directing-cew pr-16">
+            <p className=" font-semibold">{directorsName}</p>
+            <p className="italic text-sm">Director</p>
+          </div>
+          {producerInfo.length > 0 && (
+            <div className="producing-crew">
+              <p className=" font-semibold">{producerName}</p>
+              <p className="italic text-sm">Screenplay</p>
+            </div>
+          )}
         </div>
         <div className="movieCast"></div>
       </div>

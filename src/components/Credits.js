@@ -22,6 +22,7 @@ const Credits = () => {
     );
 
     const jsonData = await data.json();
+    console.log(jsonData);
     setCastData(jsonData?.cast);
   };
 
