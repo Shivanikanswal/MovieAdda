@@ -46,11 +46,11 @@ const Header = (props) => {
           </div>
         </a>
       </h1>
-      <div className="search flex bg-neutral-100 h-10 rounded-lg">
+      <div className="search flex bg-slate-300 h-10 rounded-lg">
           <input
             type="text"
             placeholder="Search..."
-            className="search-box w-96 pl-4 focus:outline-none rounded-lg"
+            className="search-box w-96 pl-4 focus:outline-none rounded-lg bg-slate-300 text-slate-800"
             value={searchText}
             onChange={(e) => {
               setSearchText(e.target.value);
