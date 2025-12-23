@@ -31,7 +31,7 @@ const Header = (props) => {
   }, [url, searchText]);
 
   return (
-    <div className="border-b border-slate-400 mb-4 flex justify-between p-4">
+    <div className="border-b border-slate-400 mb-4 flex justify-between p-4 items-center">
       <h1 className="logo text-3xl">
         <a href="/">
           <div className="flex justify-center">
@@ -42,7 +42,7 @@ const Header = (props) => {
                 className=" h-14 w-20"
               ></img>
             </span>
-            <span className="title mt-2 bg-gradient-to-r from-violet-700 to-fuchsia-500 bg-clip-text font-extrabold text-4xl text-transparent">MovieAdda</span>
+            <span className="title mt-2 bg-gradient-to-r from-purple-400 to-blue-500 bg-clip-text font-extrabold text-4xl text-transparent">MovieAdda</span>
           </div>
         </a>
       </h1>
