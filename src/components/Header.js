@@ -32,37 +32,33 @@ const Header = (props) => {
 
   return (
     <div className="border-b border-slate-400 mb-4 flex justify-between p-4">
-      <h1 className="logo text-white text-3xl">
+      <h1 className="logo text-3xl">
         <a href="/">
-          <div className="flex">
-            <span>
+          <div className="flex justify-center">
+            <span className="bg-indigo-500">
               <img
                 src="https://i.pinimg.com/736x/ea/8d/11/ea8d11f1ffc6355b8a440106ce61d0f3.jpg"
                 alt="App logo"
                 className=" h-14 w-20"
               ></img>
             </span>
-            <span className="title mt-2">MovieAdda</span>
+            <span className="title mt-2 bg-gradient-to-r from-violet-700 to-fuchsia-500 bg-clip-text font-extrabold text-4xl text-transparent">MovieAdda</span>
           </div>
         </a>
       </h1>
-      <div className="search flex rounded-sm">
-        <div>
+      <div className="search flex bg-neutral-100 h-10 rounded-lg">
           <input
             type="text"
             placeholder="Search..."
-            className="search-box bg-neutral-100 w-96 h-10 pl-4 focus:outline-none"
+            className="search-box w-96 pl-4 focus:outline-none rounded-lg"
             value={searchText}
             onChange={(e) => {
               setSearchText(e.target.value);
             }}
           />
-        </div>
-        <div>
-          <button className="bg-neutral-100 px-2 h-10 border-l border-black text-black">
+          <button className="px-3 border-l border-black text-black">
             <FontAwesomeIcon icon={faSearch} />
           </button>
-        </div>
       </div>
     </div>
   );
