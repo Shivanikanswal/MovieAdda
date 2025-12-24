@@ -31,11 +31,11 @@ const Header = (props) => {
   }, [url, searchText]);
 
   return (
-    <div className="border-b border-slate-400 mb-4 flex justify-between p-4 items-center">
+    <div className="border-b border-slate-500 mb-4 flex justify-between p-4 items-center mx-14">
       <h1 className="logo text-3xl">
         <a href="/">
           <div className="flex justify-center">
-            <span className="bg-indigo-500">
+            <span>
               <img
                 src="https://i.pinimg.com/736x/ea/8d/11/ea8d11f1ffc6355b8a440106ce61d0f3.jpg"
                 alt="App logo"
