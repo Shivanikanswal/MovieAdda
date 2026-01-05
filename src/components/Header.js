@@ -32,31 +32,31 @@ const Header = (props) => {
 
   return (
     <div className="border-b border-slate-500 mb-4 flex justify-between p-4 items-center mx-14">
-      <h1 className="logo text-3xl">
+      <h1 className="logo text-2xl md:text-3xl">
         <a href="/">
           <div className="flex justify-center">
             <span>
               <img
                 src="https://i.pinimg.com/736x/ea/8d/11/ea8d11f1ffc6355b8a440106ce61d0f3.jpg"
                 alt="App logo"
-                className=" h-14 w-20"
+                className="h-12 w-16 md:h-14 md:w-18 lg:h-14 lg:w-20"
               ></img>
             </span>
-            <span className="title mt-2 bg-gradient-to-r from-purple-400 to-blue-500 bg-clip-text font-extrabold text-4xl text-transparent">MovieAdda</span>
+            <span className="title mt-2 bg-gradient-to-r from-purple-400 to-blue-500 bg-clip-text font-extrabold text-2xl md:text-3xl lg:text-4xl text-transparent">MovieAdda</span>
           </div>
         </a>
       </h1>
-      <div className="search flex bg-slate-300 h-10 rounded-lg">
+      <div className="search hidden md:flex bg-slate-300 h-10 rounded-lg">
           <input
             type="text"
             placeholder="Search..."
-            className="search-box w-96 pl-4 focus:outline-none rounded-lg bg-slate-300 text-slate-800"
+            className="search-box w-64 md:w-64 lg:w-96 pl-4 focus:outline-none rounded-lg bg-slate-300 text-slate-800"
             value={searchText}
             onChange={(e) => {
               setSearchText(e.target.value);
             }}
           />
-          <button className="px-3 border-l border-black text-black">
+          <button className="px-3 border-l border-black text-black rounded-r-lg">
             <FontAwesomeIcon icon={faSearch} />
           </button>
       </div>
