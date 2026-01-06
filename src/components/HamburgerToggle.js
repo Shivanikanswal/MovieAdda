@@ -12,11 +12,11 @@ const HamburgerToggle = () =>{
 
     return (
       <>
-    <div className='fixed top-4 right-4 z-[9999]'>
+    <div className='fixed top-4 right-4 z-[9999] md:hidden'>
       <Hamburger toggled={isOpen} toggle={setOpen} color="#ffffff" size={26}/>
       </div>
       {isOpen && (
-        <div className="fixed inset-0 bg-black md:hidden z-[50] pt-20 text-white">
+        <div className="fixed lg:hidden inset-0 bg-black md:hidden z-[50] pt-20 text-white">
           <button className='p-3 w-full text-left flex justify-between border-t border-slate-500'>
             <div><FontAwesomeIcon icon={faMagnifyingGlass} />
              <span> Browse Movies </span>

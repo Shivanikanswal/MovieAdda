@@ -32,7 +32,6 @@ const Header = (props) => {
 
   return (
     <div className="border-b border-slate-500 mb-4 flex py-4 items-center mx-6 sm:mx-10 md:mx-14 justify-between">
-      <div className="flex justify-between">
       <h1 className="logo text-2xl md:text-3xl">
         <a href="/">
           <div className="flex justify-center">
@@ -60,7 +59,6 @@ const Header = (props) => {
           <button className="px-3 border-l border-black text-black rounded-r-lg">
             <FontAwesomeIcon icon={faSearch} />
           </button>
-      </div>
       </div>
     </div>
   );
