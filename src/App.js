@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import Body from "./components/Body";
 import { useState } from "react";
 import Credits from "./components/Credits";
+import HamburgerToggle from "./components/HamburgerToggle";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 
 const AppLayout = () => {
@@ -10,6 +11,7 @@ const AppLayout = () => {
 
   return (
     <div className="main-app bg-black">
+      <HamburgerToggle />
       <Header onSearch={setSearchResults} />
       <Outlet context={[searchResults]} />
     </div>

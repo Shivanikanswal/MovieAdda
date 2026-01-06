@@ -3,13 +3,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { BASE_URL } from "../utils/constants";
 import { API_KEY } from "../utils/constants";
+import HamburgerToggle from "./HamburgerToggle";
 
 const Header = (props) => {
   const { onSearch } = props;
   const [searchText, setSearchText] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const url = BASE_URL + "/search/movie" + API_KEY + "&query=" + searchText;
-
   useEffect(() => {
     if (searchResults) {
       onSearch(searchResults);
@@ -31,7 +31,8 @@ const Header = (props) => {
   }, [url, searchText]);
 
   return (
-    <div className="border-b border-slate-500 mb-4 flex justify-between p-4 items-center mx-14">
+    <div className="border-b border-slate-500 mb-4 flex py-4 items-center mx-6 sm:mx-10 md:mx-14 justify-between">
+      <div className="flex justify-between">
       <h1 className="logo text-2xl md:text-3xl">
         <a href="/">
           <div className="flex justify-center">
@@ -42,7 +43,7 @@ const Header = (props) => {
                 className="h-12 w-16 md:h-14 md:w-18 lg:h-14 lg:w-20"
               ></img>
             </span>
-            <span className="title mt-2 bg-gradient-to-r from-purple-400 to-blue-500 bg-clip-text font-extrabold text-2xl md:text-3xl lg:text-4xl text-transparent">MovieAdda</span>
+            <span className="title hidden sm:block mt-2 bg-gradient-to-r from-purple-400 to-blue-500 bg-clip-text font-extrabold text-2xl md:text-3xl lg:text-4xl text-transparent">MovieAdda</span>
           </div>
         </a>
       </h1>
@@ -59,6 +60,7 @@ const Header = (props) => {
           <button className="px-3 border-l border-black text-black rounded-r-lg">
             <FontAwesomeIcon icon={faSearch} />
           </button>
+      </div>
       </div>
     </div>
   );
