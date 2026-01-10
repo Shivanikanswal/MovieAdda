@@ -31,7 +31,7 @@ const Header = (props) => {
   }, [url, searchText]);
 
   return (
-    <div className="border-b border-slate-500 mb-4 flex py-4 items-center mx-6 sm:mx-10 md:mx-14 justify-between">
+    <div className="header border-b border-slate-500 mb-4 flex py-4 items-center p-6 sm:px-10 md:px-14 justify-between">
       <h1 className="logo text-2xl md:text-3xl">
         <a href="/">
           <div className="flex justify-center">

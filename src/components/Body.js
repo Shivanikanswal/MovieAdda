@@ -26,7 +26,7 @@ const Body = (props) => {
   return (
     <div className="mainbody">
       <div className="movie-container">
-        <div className="flex flex-wrap justify-center gap-[4.25rem] py-4 px-2 mt-9">
+        <div className="flex flex-wrap justify-center gap-[4.25rem] py-4 px-2">
           {searchResults?.length > 0
             ? searchResults.map((resData, index) => {
                 return (

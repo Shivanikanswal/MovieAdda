@@ -4,6 +4,7 @@ import Body from "./components/Body";
 import { useState } from "react";
 import Credits from "./components/Credits";
 import HamburgerToggle from "./components/HamburgerToggle";
+import Footer from "./components/Footer";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 
 const AppLayout = () => {
@@ -14,6 +15,7 @@ const AppLayout = () => {
       <HamburgerToggle />
       <Header onSearch={setSearchResults} />
       <Outlet context={[searchResults]} />
+      <Footer />
     </div>
   );
 };
